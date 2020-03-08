@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getSession().getAttribute("username") == null) {
+        if (req.getSession().getAttribute("username") == null) {
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
             resp.sendRedirect(req.getContextPath() + "/");
@@ -27,6 +27,25 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String action = req.getParameter("action");
+
+        switch (action) {
+            case "login":
+                loginUser(req, resp);
+                break;
+            case "logout":
+            default:
+                logoutUser(req, resp);
+        }
+    }
+
+    private void logoutUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getSession().invalidate();
+
+        getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+    }
+
+    private void loginUser(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 

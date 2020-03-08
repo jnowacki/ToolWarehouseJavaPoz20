@@ -12,12 +12,13 @@
 
 <c:if test="${sessionScope.username != null}">
     <h2>Witaj ${sessionScope.username}</h2>
+
+    <form action="${pageContext.request.contextPath}/login" method="post">
+        <input type="hidden" name="action" value="logout">
+        <input type="submit" value="Log out">
+    </form>
 </c:if>
 
-<form action="${pageContext.request.contextPath}/login" method="post">
-    <input type="hidden" name="action" value="logout">
-    <input type="submit" value="Log out">
-</form>
 
 <table>
 
