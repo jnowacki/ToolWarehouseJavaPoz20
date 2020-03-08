@@ -10,6 +10,12 @@
 </head>
 <body>
 
+<c:if test="${requestScope.hasError}">
+    <div class="error">
+        Dane niepoprawne!
+    </div>
+</c:if>
+
 <form method="post">
     <label for="username" class="label">Login:</label>
     <input type="text" id="username" name="username"><br/>
@@ -17,6 +23,7 @@
     <label for="password" class="label">Password:</label>
     <input type="text" id="password" name="password"><br/>
 
+    <input type="hidden" name="action" value="login">
     <input type="submit" value="Log in">
 </form>
 
