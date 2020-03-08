@@ -12,6 +12,13 @@ public class Tool implements Serializable {
     public Tool() {
     }
 
+    public Tool(Long id, String name, ToolType type, boolean availability) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.availability = availability;
+    }
+
     public Long getId() {
         return id;
     }
