@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>Here we will have a list of tools</h2>
+${requestScope.tools}
 
 </body>
 </html>

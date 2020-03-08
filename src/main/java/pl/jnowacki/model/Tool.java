@@ -50,4 +50,14 @@ public class Tool implements Serializable {
     public void setAvailability(boolean availability) {
         this.availability = availability;
     }
+
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", availability=" + availability +
+                '}';
+    }
 }

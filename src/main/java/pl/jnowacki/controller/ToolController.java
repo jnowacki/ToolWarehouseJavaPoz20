@@ -1,5 +1,9 @@
 package pl.jnowacki.controller;
 
+import pl.jnowacki.dao.ToolDaoImpl;
+import pl.jnowacki.service.ToolService;
+import pl.jnowacki.service.ToolServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +14,12 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {""}, name = "ToolServlet")
 public class ToolController extends HttpServlet {
 
+    private ToolService toolService = ToolServiceImpl.getInstance();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setAttribute("tools", toolService.getAll());
         getServletContext().getRequestDispatcher("/tools.jsp").forward(req, resp);
     }
 }
