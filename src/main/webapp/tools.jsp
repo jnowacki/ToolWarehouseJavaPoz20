@@ -6,10 +6,28 @@
 <html>
 <head>
     <title>Tools</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 <body>
 
-${requestScope.tools}
+<table>
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Available</th>
+    </tr>
+
+    <c:forEach items="${requestScope.tools}" var="tool">
+        <tr>
+            <td>${tool.id}</td>
+            <td>${tool.name}</td>
+            <td>${tool.type}</td>
+            <td>${tool.availability}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 </body>
 </html>
