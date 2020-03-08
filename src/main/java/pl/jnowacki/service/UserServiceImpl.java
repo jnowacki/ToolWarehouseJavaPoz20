@@ -1,12 +1,13 @@
 package pl.jnowacki.service;
 
 import pl.jnowacki.dao.UserDao;
-import pl.jnowacki.dao.UserDaoImpl;
+import pl.jnowacki.dao.UserDaoDBImpl;
 import pl.jnowacki.model.User;
+import pl.jnowacki.util.PasswordUtil;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao = UserDaoImpl.getInstance();
+    private UserDao userDao = UserDaoDBImpl.getInstance();
 
     private static UserServiceImpl instance;
 
@@ -23,7 +24,8 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public boolean isUserValid(String username, String password) {
-        User user = userDao.getUser(username, password);
-        return user != null;
+        User user = userDao.getUser(username);
+
+        return user != null && PasswordUtil.checkPassword(password, user.getPassword());
     }
 }
