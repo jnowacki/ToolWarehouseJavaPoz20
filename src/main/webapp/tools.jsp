@@ -24,7 +24,7 @@
             <td>${tool.id}</td>
             <td>${tool.name}</td>
             <td>${tool.type}</td>
-            <td>${tool.availability}</td>
+            <td class="${tool.availability ? '' : 'not-'}available"></td>
         </tr>
     </c:forEach>
 </table>
