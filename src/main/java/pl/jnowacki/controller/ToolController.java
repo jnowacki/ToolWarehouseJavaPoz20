@@ -22,4 +22,15 @@ public class ToolController extends HttpServlet {
         req.setAttribute("tools", toolService.getAll());
         getServletContext().getRequestDispatcher("/tools.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Long id = Long.parseLong(req.getParameter("id"));
+        boolean isAvailable = Boolean.parseBoolean(req.getParameter("isAvailable"));
+
+        toolService.setAvailability(id, isAvailable);
+
+        resp.sendRedirect(req.getContextPath() + "/");
+    }
 }

@@ -2,6 +2,10 @@ table, th, td {
     border: 1px solid black;
 }
 
+form {
+    margin: 0;
+}
+
 .available {
     background-color: green;
 }
