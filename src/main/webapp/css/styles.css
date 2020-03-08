@@ -6,6 +6,12 @@ form {
     margin: 0;
 }
 
+.label {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
 .available {
     background-color: green;
 }
