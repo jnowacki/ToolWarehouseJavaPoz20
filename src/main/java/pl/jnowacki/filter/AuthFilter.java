@@ -13,7 +13,10 @@ public class AuthFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-
-        chain.doFilter(req, res);
+        if (req.getSession().getAttribute("username") != null) {
+            chain.doFilter(req, res);
+        } else {
+            res.sendRedirect(req.getContextPath() + "/login");
+        }
     }
 }
